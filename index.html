@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript </title>
+</head>
+<body>
+
+    <main id="hamz">
+        <h1 >Chaninging HTML with Javascript
+        </h1>
+        <button id="gfg">Pree me</button>
+            <h1 id="za"></h1>
+        <p>similwerly we can create a function with with we cAN creat differnt elemnts and append The body of HTML  add Text and differnt attribute to them  according to the Logic we can want </p>
+    
+        </main>
+
+    <script>
+        let aa=document.createElement("h1");
+        aa.innerHTML="Created BY JavaSxcript"
+        document.body.appendChild(aa)
+     
+        let sa=document.getElementById("za")
+        var aq=document.getElementById("gfg");
+        aq.addEventListener("click",mun)
+        function mun(){
+            var age=prompt("Hpw old are You");
+            console.log("aGe is AS ")
+            console.log(age)
+            window.confirm("Are You sure")
+            sa.innerHTML=age;
+        }
+        // a simple canvas 
+        var qw = document.createElement("canvas");
+        qw.width=50;
+        qw.height=50;
+        var ctx=qw.getContext('2d');
+        ctx.font="30px Cursive";
+        ctx.fillText("Hello Hamaz",50,50);
+        document.body.appendChild(qw)
+            console.log(qw)
+        
+            // adding a simple cookie to a documnet
+         console.log(document.cookie) // get cookies
+         document.cookie=`name=hamza; path=/`;
+         console.log(document.cookie) // get cookies
+         // we can also chnae the ccokies Object as we wanted 
+         document.cookie=`name=hassan; path=/`;
+          // function to set get and check cookies
+          function setCookie(name,value,exp){
+             const d= (new Date(Date.now()+6000).toUTCString());
+             let expire= `expire=`+d;
+             document.cookie=name+ `=`+value+`;`+expire+`;path=/`;
+          } 
+          setCookie(`name`,"Hamza") 
+          function getCookie(cname){
+             let name=cname +`=`;
+             
+             let ca=document.cookie.split(`:`);
+             for(let i=0; i<=ca.length; i++){
+                let  c=ca[i];
+                 while(c.charAt(0)==" "){
+                     c=c.substring(1);
+                 }
+                 if(c.indexOf(name)==0){
+                     return c.substring(name.length, c.length)
+                 }
+             }
+             return ""
+          };
+          //console.table(getCookie(`name`))
+          //check cookies
+          function checkCookie() {
+            let user = getCookie("username");
+            if (user != "") {
+              alert("Welcome again " + user);
+            } else {
+              user = prompt("Please enter your name:", "");
+              if (user != "" && user != null) {
+                setCookie("username", user, 365);
+              }
+            }
+          }   
+//          checkCookie()        
+
+          //local storage
+          var players = [{name: "Tyler", score: 22}, {name: "Ryan", score: 41}];
+          localStorage.setItem('players', JSON.stringify(players));
+          console.log(JSON.parse(localStorage.getItem(`players`)));
+
+            console.log(window.history)
+          console.table(navigator) // all info of navigatio Object 
+
+          // react on events 
+          function react(){
+            console.log("this a script entry point");
+            document.body.onclick = () => {
+            console.log("onclick");
+            };
+            setTimeout(() => {
+            console.log("setTimeout callback log 1");
+            console.log("setTimeout callback log 2");
+            }, 1000);
+           }
+           react()
+
+
+
+
+// we can also regester a new event as we want
+const InitiallyHiddenElement = document.registerElement('initially-hidden', class extends
+    HTMLElement {
+    createdCallback() {
+    this.revealTimeoutId = null;
+    }
+    attachedCallback() {
+    const seconds = Number(this.getAttribute('for'));
+    this.style.display = 'none';
+    this.revealTimeoutId = setTimeout(() => {
+    this.style.display = 'block';
+    }, seconds * 1000);
+    }
+    detachedCallback() {
+    if (this.revealTimeoutId) {
+    clearTimeout(this.revealTimeoutId);
+    this.revealTimeoutId = null;
+    }
+    }
+    });
+      //  <initially-hidden for="2">`Hello`</initially-hidden> 
+    //   <initially-hidden for="5">World</initially-hidden>
+
+    // create a function like react lie from scratch as we wnated manuoplate the dom  
+
+
+//we can use template litterant insted of a text we can easily pass the value from functions
+
+
+//simple function that will fetch  data and render in dom
+function DomEntry(){
+  const url =
+  'http://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged=javascript';
+  const questionList = document.createElement('ul');
+  document.body.appendChild(questionList);
+  const responseData = fetch(url).then(response => response.json());
+  responseData.then(({items, has_more, quota_max, quota_remaining}) => {
+  for (const {title, score, owner, link, answer_count} of items) {
+    console.log(responseData)
+    const listItem = document.createElement('li');
+  questionList.appendChild(listItem);
+  const a = document.createElement('a');
+  listItem.appendChild(a);
+  a.href = link;
+  a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'})`
+  }
+  });
+}
+
+DomEntry()
+
+//function that will return the height and size of screen
+
+
+    </script>
+       <script>
+        function Scre(){
+          console.log(`screen function`)
+          let  availableArea = {
+            pos: {
+            x: window.screen.availLeft,
+            y: window.screen.availTop
+            },
+            size: {
+            width: window.screen.availWidth,
+            height: window.screen.availHeight
+            }
+            };
+        }
+
+
+
+        // function that creat and append dome
+        function appen(par,text,varib){
+          varib=document.createElement(`${par}`);
+         varib.innerHTML=`${text}`
+         document.body.appendChild(varib)
+       }// tag , text , constant
+        console.table(window.screen)
+        const scrr= (window.screen)
+        appen(`h1`,`Generated by functions`,`lkj`)         
+
+        appen(`h1`,`width:  ${scrr.width}`,`lkj`)         
+       appen(`h1`,`Height:  ${scrr.height}`,`lkj`)
+       appen(`h1`,`we can also define more function that will make life easir `,`lkj`)
+        console.log(navigator.geolocation.watchPosition)
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationFailure);
+          } else {
+          console.log("Geolocation is not supported by this browser.");
+          }
+          // Function that will be called if the query succeeds
+          var geolocationSuccess = function(pos) {
+          console.log("Your location is " + pos.coords.latitude + "°, " + pos.coords.longitude + "°.");
+          };
+          // Function that will be called if the query fails
+          var geolocationFailure = function(err) {
+          console.log("ERROR (" + err.code + "): " + err.message);
+          };
+      
+      </script>     
+</body>
+
+</html>
